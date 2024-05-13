@@ -1,0 +1,41 @@
+placar = {"time_casa": "Rhynos", "time_visitante": "Steam", "placar_casa": 0, "placar_visitante": 0}
+
+def touchdown(time):
+    if time == placar["time_casa"]:
+        placar["placar_casa"] += 6
+    elif time == placar["time_visitante"]:
+        placar["placar_visitante"] += 6
+
+def ponto_extra_conversão_1(time):
+    if time == placar["time_casa"]:
+        placar["placar_casa"] += 1
+    elif time == placar["time_visitante"]:
+        placar["placar_visitante"] += 1
+
+def ponto_extra_conversão_2(time):
+    if time == placar["time_casa"]:
+        placar["placar_casa"] += 2
+    elif time == placar["time_visitante"]:
+        placar["placar_visitante"] += 2
+
+def field_goal(time):
+    if time == placar["time_casa"]:
+        placar["placar_casa"] += 3
+    elif time == placar["time_visitante"]:
+        placar["placar_visitante"] += 3
+
+def safety(time):
+    if time == placar["time_casa"]:
+        placar["placar_casa"] += 2
+    elif time == placar["time_visitante"]:
+        placar["placar_visitante"] += 2
+
+print("O melhor placar chegou para te ajudar")
+print("Coloque o tempo para rodar com o apito do Juiz e tudo vai dar certo")
+print("selecione o tipo de operacao de acordo com o andameento do jogo")
+print("1 - touchdown")
+print("2 - ponto_extra_conversão_1")
+print("3 - ponto_extra_conversão_2")
+print("4 - field_goal")
+print("5 - safety")
+
