@@ -1,0 +1,138 @@
+import tkinter as tk
+from tkinter import messagebox
+
+class ValueCounterApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Placar Futebol Americano")
+
+        self.value = 0
+
+        self.label = tk.Label(root, text=f"Placar: {self.value}", font=("Helvetica", 32))
+        self.label.pack(pady=20)
+
+        self.instructions = tk.Label(root, text="Use os botões abaixo para colocar a pontuação.", font=("Helvetica", 16))
+        self.instructions.pack(pady=10)
+
+        self.create_buttons()
+        self.create_entry()
+
+    def create_buttons(self):
+        frame = tk.Frame(self.root)
+        frame.pack(pady=10)
+
+        increment_0_button = tk.Button(frame, text="Touchdown_time_1", command=self.increment, font=("Helvetica", 8))
+        increment_0_button.grid(row=0, column=0, padx=5)
+
+        increment_1_button = tk.Button(frame, text="Touchdown_time_2", command=self.increment, font=("Helvetica", 8))
+        increment_1_button.grid(row=0, column=1, padx=5)
+
+        increment_2_button = tk.Button(frame, text="Extra_point_time_1", command=self.increment, font=("Helvetica", 8))
+        increment_2_button.grid(row=0, column=2, padx=5)
+
+        increment_3_button = tk.Button(frame, text="Extra_point_time_2", command=self.increment, font=("Helvetica", 8))
+        increment_3_button.grid(row=0, column=3, padx=5)
+
+        increment_4_button = tk.Button(frame, text="two_point_conversion_time_1", command=self.increment, font=("Helvetica", 8))
+        increment_4_button.grid(row=0, column=4, padx=5)
+
+        increment_5_button = tk.Button(frame, text="two_point_conversion_time_2", command=self.increment, font=("Helvetica", 8))
+        increment_5_button.grid(row=0, column=5, padx=5)
+
+        increment_6_button = tk.Button(frame, text="field_goal_time_1", command=self.increment, font=("Helvetica", 8))
+        increment_6_button.grid(row=0, column=6, padx=5)
+
+        increment_7_button = tk.Button(frame, text="field_goal_time_2", command=self.increment, font=("Helvetica", 8))
+        increment_7_button.grid(row=0, column=7, padx=5)
+
+        increment_8_button = tk.Button(frame, text="safety_time_1", command=self.increment, font=("Helvetica", 8))
+        increment_8_button.grid(row=0, column=8, padx=5)
+
+        increment_9_button = tk.Button(frame, text="safety_time_2", command=self.increment, font=("Helvetica", 8))
+        increment_9_button.grid(row=0, column=9, padx=5)
+
+        decrement_button = tk.Button(frame, text="Decrementar", command=self.decrement, font=("Helvetica", 8))
+        decrement_button.grid(row=0, column=10, padx=5)
+
+        reset_button = tk.Button(frame, text="Zerar", command=self.reset, font=("Helvetica", 8))
+        reset_button.grid(row=0, column=11, padx=5)
+
+        exit_button = tk.Button(frame, text="Sair", command=self.exit, font=("Helvetica", 8))
+        exit_button.grid(row=0, column=12, padx=5)
+
+    def create_entry(self):
+        self.entry_label = tk.Label(self.root, text="Digite um valor:", font=("Helvetica", 16))
+        self.entry_label.pack(pady=5)
+
+        self.entry = tk.Entry(self.root, font=("Helvetica", 16))
+        self.entry.pack(pady=5)
+
+        self.set_value_button = tk.Button(self.root, text="Definir Valor", command=self.set_value_from_entry, font=("Helvetica", 14))
+        self.set_value_button.pack(pady=10)
+
+    def increment_0(self):
+        self.value += 6
+        self.update_label()
+
+    def increment_1(self):
+        self.value += 6
+        self.update_label()
+
+    def increment_2(self):
+        self.value += 1
+        self.update_label()
+
+    def increment_3(self):
+        self.value += 1
+        self.update_label()
+
+    def increment_4(self):
+        self.value += 2
+        self.update_label()
+
+    def increment_5(self):
+        self.value += 2
+        self.update_label()
+
+    def increment_6(self):
+        self.value += 3
+        self.update_label()
+
+    def increment_7(self):
+        self.value += 3
+        self.update_label()
+
+    def increment_8(self):
+        self.value += 2
+        self.update_label()
+
+    def increment_9(self):
+        self.value += 2
+        self.update_label()
+
+    def decrement(self):
+        self.value -= 1
+        self.update_label()
+
+    def reset(self):
+        self.value = 0
+        self.update_label()
+
+    def exit(self):
+        self.root.quit()
+
+    def set_value_from_entry(self):
+        try:
+            new_value = int(self.entry.get())
+            self.value = new_value
+            self.update_label()
+        except ValueError:
+            messagebox.showerror("Erro de entrada", "Por favor, insira um valor numérico válido.")
+
+    def update_label(self):
+        self.label.config(text=f"Valor: {self.value}")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = ValueCounterApp(root)
+    root.mainloop()
